@@ -53,6 +53,8 @@ class ExpensesAdapter(val c:Context, val ExpenseList: ArrayList<Expense>): Recyc
                                 position.ExpenseItem = newExpItemName.selectedItem.toString()
                                 position.ExpenseAmount = newExpAmount.text.toString()
                                 position.ExpenseNote = newExpNote.text.toString()
+                                sqlExp.insertExpense(Expense("",newExpItemName.selectedItem.toString(), newExpAmount.text.toString(), newExpNote.text.toString(), position.ExpenseDate))
+                                sqlExp.deleteExpense(position.ExpenseID)
                                 notifyDataSetChanged()
                                 Toast.makeText(c,"User Information is Edited",Toast.LENGTH_SHORT).show()
                                 dialog.dismiss()
